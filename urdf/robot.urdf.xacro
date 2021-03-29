@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="noob_robot">
+    <!-- ROBOT DIMENSIONS -->
+    <xacro:property name="wheel_len" value="0.05"/>
+    <xacro:property name="wheel_diam" value="0.2" />
+    <xacro:property name="pi" value="3.1415" />
+    <xacro:property name="box_length" value="0.5"/>
+    <xacro:property name="box_width" value="0.5"/>
+    <xacro:property name="box_height" value="0.25"/>
+    <xacro:property name="wheel_mass" value="0.5"/>
+    <xacro:property name="box_mass" value="5"/>
+    <xacro:property name="kinect_length" value="0.1"/>
+    <xacro:property name="kinect_width" value="0.2"/>
+    <xacro:property name="kinect_height" value="0.12"/>
+    <xacro:property name="kinect_mass" value="1"/>
+
+    <material name="blue">
+        <color rgba="0 0 0.8 0.75" />
+    </material>
+    <material name="white">
+        <color rgba="1 1 1 1" />
+    </material>
+    <material name="black">
+        <color rgba="0.05 0.05 0.05 1" />
+    </material>
+
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="${box_length} ${box_width} ${box_height}"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="${box_length} ${box_width} ${box_height}"/>
+            </geometry>
+        </collision>
+
+        <inertial>   <!-- CHANGE HERE THE REAL MASS AND INTERIA VALUES OF OUR ROBOT-->
+            <mass value="0.5" />
+            <inertia ixx="0.13" ixy="0.0" ixz="0.0" iyy="0.21" iyz="0.0" izz="0.13" />
+        </inertial>
+    </link>
+
+    <xacro:macro name="wheel" params="prefix_x prefix_y reflect_x reflect_y">
+        <link name="${prefix_x}_${prefix_y}_wheel">
+            <visual>
+                <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+                <geometry>
+                    <cylinder length="${wheel_len}" radius="${wheel_diam/2}"/>
+                </geometry>
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+                <geometry>
+                    <cylinder length="${wheel_len}" radius="${wheel_diam/2}"/>
+                </geometry>
+            </collision>
+            <inertial>  <!-- CHANGE WHEEL INTERIAL VALUES HERE -->
+                <mass value="${wheel_mass}"/>
+                <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+            </inertial>
+        </link>
+
+        <joint name="${prefix_x}_${prefix_y}_wheel_joint" type="continuous">
+            <parent link="base_link"/>
+            <child link="${prefix_x}_${prefix_y}_wheel"/>
+            <origin xyz="${reflect_x*(box_length/2)-(reflect_x*(wheel_diam/2))} ${reflect_y*(wheel_len+(box_width/2))} -0.1" rpy="0 0 0"/>
+            <axis xyz="0 1 0"/>
+        </joint>
+    </xacro:macro>
+    <xacro:wheel prefix_x="front" prefix_y="right" reflect_x="1" reflect_y="1"/>
+    <xacro:wheel prefix_x="front" prefix_y="left" reflect_x="1" reflect_y="-1"/>
+    <xacro:wheel prefix_x="back" prefix_y="right" reflect_x="-1" reflect_y="1"/>
+    <xacro:wheel prefix_x="back" prefix_y="left" reflect_x="-1" reflect_y="-1"/>
+
+
+    <link name="kinect">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://project/mesh/kinect.dae"/>
+            </geometry>
+        </visual>
+
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="${kinect_length} ${kinect_width} ${kinect_height}"/>
+            </geometry>
+        </collision>
+
+        <inertial>
+            <mass value="${kinect_mass}"/>
+            <inertia ixx="0.000375" ixy="0" ixz="0" iyy="0.000375" iyz="0" izz="0.000375"/>
+        </inertial>
+    </link>
+
+    <joint name="kinect_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="kinect"/>
+        <origin xyz="${(box_length/2)-(kinect_length/2)} 0 ${(box_height/2)+(kinect_height/2)}"/>
+    </joint>
+
+</robot>

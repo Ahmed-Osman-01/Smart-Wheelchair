@@ -1,0 +1,17 @@
+<launch>
+
+    <include file="$(find project)/launch/controllers.launch"/>
+    <include file="$(find project)/launch/gazebo.launch"/>
+    <param name="/robot/robot_description" command="xacro '$(find project)/urdf/robot.urdf.xacro'" />
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project)/urdf.rviz" required="true" ns="/robot"/>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" >
+        <remap from="/joint_states" to="/robot/joint_states" />
+    </node>
+
+    <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+        <param name="default_topic" value="/robot/wheels_velocity_controller/cmd_vel"/>
+    </node>
+</launch>

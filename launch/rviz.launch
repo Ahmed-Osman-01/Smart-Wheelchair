@@ -14,5 +14,5 @@
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
 
     <!-- RUNNING THE RVIZ NODE-->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project)/urdf.rviz" required="true"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project)/urdf.rviz" required="true" ns="/robot"/>
 </launch>

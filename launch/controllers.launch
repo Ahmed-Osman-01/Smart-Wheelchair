@@ -1,0 +1,14 @@
+<launch>
+
+    <param name="/robot/robot_description" command="xacro '$(find project)/urdf/robot.urdf.xacro'" />
+
+    <rosparam command="load"
+              file="$(find project)/config/controllers.yaml"/>
+
+
+
+    <node name="robot_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+          ns="/robot" args="joint_state_controller wheels_velocity_controller"/>
+    
+
+</launch>

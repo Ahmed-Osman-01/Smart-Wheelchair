@@ -105,6 +105,8 @@
     <xacro:wheel prefix_x="back" prefix_y="left" reflect_x="-1" reflect_y="1"/>
 
 
+
+    <!-- LINK AND JOINT FOR THE KINECT CAMERA-->
     <link name="kinect">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -122,7 +124,7 @@
 
         <inertial>
             <mass value="${kinect_mass}"/>
-            <inertia ixx="0.000375" ixy="0" ixz="0" iyy="0.000375" iyz="0" izz="0.000375"/>
+            <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
         </inertial>
     </link>
 
@@ -133,5 +135,32 @@
     </joint>
 
 
+        <!-- kinect optical link for fixing the point cloud view-->
+    <link name="kinect_optical">
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.15 0.30 0.15"/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.05 0.05"/>
+            </geometry>
+        </visual>
+        <inertial>
+            <mass value="1e-5" />
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+    </link>
 
+    <joint name="kinect_optical_joint" type="fixed">
+        <axis xyz="0 1 0"/>
+        <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+        <parent link="kinect"/>
+        <child link="kinect_optical"/>
+    </joint>
+    
 </robot>

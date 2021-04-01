@@ -4,7 +4,7 @@
     <include file="$(find project)/launch/gazebo.launch"/>
     <param name="/robot/robot_description" command="xacro '$(find project)/urdf/robot.urdf.xacro'" />
 
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project)/urdf.rviz" required="true" ns="/robot"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project)/urdf.rviz" required="true" />
 
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
         respawn="false" >

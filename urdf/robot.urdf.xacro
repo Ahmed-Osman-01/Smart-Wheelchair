@@ -162,5 +162,32 @@
         <parent link="kinect"/>
         <child link="kinect_optical"/>
     </joint>
+
+
+    <link name="imu_sensor">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.05 0.02"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.05 0.02"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1e-5" />
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+    </link>
+
+    <joint name="imu_sensor_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="imu_sensor"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
     
 </robot>

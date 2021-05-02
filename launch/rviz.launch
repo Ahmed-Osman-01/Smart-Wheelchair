@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="model" default="robot.urdf.xacro"/>
-    <arg name="gui" default="False"/>
+    <arg name="gui" default="True"/>
 
     <!-- ROBOT DESCRIPTION IS A REQUIRED PARAMETER AND USING THE XACRO COMMAND BECAUSE WE ARE USING THE XACRO FORMAT-->
-    <param name="robot_description" command="xacro '$(find project)/urdf/$(arg model)'" />
+<!--    <param name="robot_description" command="xacro '$(find project)/urdf/$(arg model)'" />-->
+    <param name="robot_description" command="cat $(find nox_description)/urdf/nox.urdf"/>
     <param name="use_gui" value="$(arg gui)"/>
 
     <!-- SENDING JOINT VALUES-->

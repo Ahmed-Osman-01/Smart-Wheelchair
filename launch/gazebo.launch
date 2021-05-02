@@ -14,9 +14,10 @@
         <arg name="headless" value="$(arg headless)"/>
     </include>
 
+
     <param name="robot_description" command="xacro '$(find project)/urdf/robot.urdf.xacro'" />
 
     <node pkg="gazebo_ros" type="spawn_model" name="urdf_spawner"
-        args="-z 1.0 -unpause -urdf -model robot -param robot_description" respawn="false" output="screen" ns="/robot"/>
+        args="-z 1.0 -unpause -urdf -model robot -param robot_description" respawn="false" output="screen" />
 
 </launch>

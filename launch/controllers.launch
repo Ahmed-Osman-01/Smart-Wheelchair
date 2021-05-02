@@ -8,7 +8,8 @@
 
 
     <node name="robot_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-          ns="/robot" args="joint_state_controller wheels_velocity_controller"/>
-    
+           args="joint_state_controller wheels_velocity_controller"/>
+
+
 
 </launch>

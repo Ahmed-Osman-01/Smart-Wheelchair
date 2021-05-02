@@ -1,0 +1,54 @@
+NavfnROS:
+  allow_unknown: true
+  planner_window_x: 0.0
+  planner_window_y: 0.0
+  default_tolerance: 0.1
+
+TrajectoryPlannerROS:
+  #Set the acceleration limits of the robot
+  acc_lim_th: 3.2
+  acc_lim_x: 2.5
+#  acc_lim_y: 2.5
+  world_model: costmap
+  #Set the velocity limits of the robot
+  max_vel_x: 0.4
+  min_vel_x: 0.1
+  max_vel_theta: 0.7
+  min_vel_theta: -0.7
+  min_in_place_vel_theta: 0.4
+
+  #The velocity the robot will command when trying to escape from a stuck situation
+  escape_vel: -0.1
+
+  #For this example, we'll use a holonomic robot
+  holonomic_robot: false
+
+  #Set the tolerance on achieving a goal
+  xy_goal_tolerance: 0.1 # 10 cm
+  yaw_goal_tolerance: 0.05
+  latch_xy_goal_tolerance: false
+
+  #We'll configure how long and with what granularity we'll forward simulate trajectories
+  sim_time: 1.0
+  sim_granularity: 0.025 # -----
+  vx_samples: 3 #----
+  vtheta_samples: 20 #----
+# controller_frequency:
+
+
+  #Parameters for scoring trajectories
+  meter_scoring: true
+  goal_distance_bias: 0.6
+  path_distance_bias: 0.6
+  occdist_scale: 0.01  # avoiding obstacles bias
+  heading_lookahead: 0.325
+  dwa: true
+  global_frame_id: map
+
+
+  #Oscillation Prevention Parameters
+  oscillation_reset_dist: 0.05
+
+
+  #Global Plan Parameters
+  prune_plan: true

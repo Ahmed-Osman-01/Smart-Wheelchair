@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node pkg="move_base" type="move_base" name="move_base">
+        <remap from="/cmd_vel" to="/wheels_velocity_controller/cmd_vel"/>
+        <rosparam command="load" file="$(find project)/navigation/config/cost_map_common.yaml" ns="global_costmap"/>
+        <rosparam command="load" file="$(find project)/navigation/config/cost_map_common.yaml" ns="local_costmap"/>
+        <rosparam command="load" file="$(find project)/navigation/config/global_cost_map.yaml"/>
+        <rosparam command="load" file="$(find project)/navigation/config/local_cost_map.yaml"/>
+        <rosparam command="load" file="$(find project)/navigation/config/planner.yaml"/>
+        <rosparam command="load" file="$(find project)/navigation/config/move_base.yaml"/>
+    </node>
+</launch>

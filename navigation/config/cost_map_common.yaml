@@ -1,0 +1,32 @@
+#plugins:
+#    - {name: static_map,       type: "costmap_2d::StaticLayer"}
+
+#Set map type
+map_type: costmap
+
+#Set the tolerance we're willing to have for tf transforms
+transform_tolerance: 0.2
+
+#Obstacle marking parameters
+obstacle_range: 2.5
+max_obstacle_height: 2.0
+raytrace_range: 3.0
+
+#The footprint of the robot
+footprint: [ [0.250, 0.250], [0.250, -0.250], [-0.250, -0.250], [-0.250, 0.250] ]
+
+#Inscribed and circumscribed radius
+inscribed_radius: 0.2
+circumscribed_radius: 0.3
+
+#Cost function parameters
+inflation_radius: 0.4
+cost_scaling_factor: 10.0
+
+#The cost at which a cell is considered an obstacle when a map is read from the map_server
+lethal_cost_threshold: 100
+
+#Configuration for the sensors that the costmap will use to update a map
+observation_sources: laser_scan
+
+laser_scan: {sensor frame: kinect, data_type: LaserScan, topic: /camera/scan, expected_update_rate: 1.5, observation_persistence: 0.0, marking: true, clearing: true}

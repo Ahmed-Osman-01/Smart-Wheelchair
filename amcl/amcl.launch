@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<launch>
+    <arg name="map_file" default="$(find project)/slam/map.yaml"/>
+    <arg name="pose_x" />
+    <arg name="pose_y" />
+    <arg name="angle" />
+
+    <node pkg="amcl" type="amcl" name="amcl" >
+        <rosparam command="load" file="$(find project)/amcl/amcl.yaml"/>
+        <param name="initial_pose_x" value="$(arg pose_x)"/>
+        <param name="initial_pose_y" value="$(arg pose_y)"/>
+        <param name="initial_pose_a" value="$(arg angle)"/>
+        <remap from="map" to="/map"/>
+        <remap from="scan" to="/camera/scan"/>
+    </node>
+
+
+    <node type="map_server" pkg="map_server" name="map_server" args="$(arg map_file)">
+        <remap from="map" to="/map"/>
+    </node>
+</launch>

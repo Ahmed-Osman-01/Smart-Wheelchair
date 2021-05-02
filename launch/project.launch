@@ -1,17 +1,31 @@
 <launch>
 
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="a" default="0.0"/>
+
     <include file="$(find project)/launch/controllers.launch"/>
     <include file="$(find project)/launch/gazebo.launch"/>
+<!--    <include file="$(find project)/localization/launch/localization.launch"/>-->
+    <include file="$(find project)/slam/launch/cloud_to_laser.launch"/>
+<!--    <include file="$(find project)/slam/launch/gmapping.launch"/>-->
+    <include file="$(find project)/amcl/amcl.launch">
+        <arg name="pose_x" value="$(arg x)"/>
+        <arg name="pose_y" value="$(arg y)"/>
+        <arg name="angle" value="$(arg a)"/>
+    </include>
+    <include file="$(find project)/navigation/launch/move_base.launch"/>
+<!--    <include file="$(find project)/slam/launch/depth_to_laser.launch"/> -->
     <param name="/robot/robot_description" command="xacro '$(find project)/urdf/robot.urdf.xacro'" />
+
 
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project)/urdf.rviz" required="true" />
 
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
         respawn="false" >
-        <remap from="/joint_states" to="/robot/joint_states" />
     </node>
 
     <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-        <param name="default_topic" value="/robot/wheels_velocity_controller/cmd_vel"/>
+        <param name="default_topic" value="/wheels_velocity_controller/cmd_vel"/>
     </node>
 </launch>

@@ -67,42 +67,10 @@
             <mass value="0.25" />
             <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
         </inertial>
-
     </link>
 
 
     <xacro:macro name="wheel" params="prefix_x prefix_y reflect_x reflect_y">
-
-<!--           WHEELS SHAFT-->
-<!--        <link name="${prefix_x}_${prefix_y}_shaft">-->
-<!--            <visual>-->
-<!--                <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>-->
-<!--                <geometry>-->
-<!--                    <cylinder length="0.07" radius="0.007"/>-->
-<!--                </geometry>-->
-<!--            </visual>-->
-
-<!--            <collision>-->
-<!--                <origin rpy="${pi/2} 0 0" xyz="0 0 0"/>-->
-<!--                <geometry>-->
-<!--                    <cylinder length="0.07" radius="0.007"/>-->
-<!--                </geometry>-->
-<!--            </collision>-->
-
-<!--            <inertial>  &lt;!&ndash; CHANGE SHAFT INTERIAL VALUES HERE &ndash;&gt;-->
-<!--                <mass value="0.2"/>-->
-<!--                <inertia ixx="0.0008" ixy="0.0" ixz="0.0" iyy="0.0008" iyz="0.0" izz="0.0015" />-->
-<!--            </inertial>-->
-<!--        </link>-->
-
-<!--        <joint name="${prefix_x}_${prefix_y}_shaft_joint" type="continuous">-->
-<!--            <parent link="base_link"/>-->
-<!--            <child link="${prefix_x}_${prefix_y}_shaft"/>-->
-<!--            <origin xyz="${reflect_x*((box_length/2)+0.06)-(reflect_x*(wheel_diam/2))} ${reflect_y*(wheel_len+(box_width/2))} -0.12" rpy="0 0 0"/>-->
-<!--            <axis xyz="0 1 0"/>-->
-<!--            <limit effort="300.0" velocity="100.0"/>-->
-<!--        </joint>-->
-
 
         <link name="${prefix_x}_${prefix_y}_wheel">
             <visual>

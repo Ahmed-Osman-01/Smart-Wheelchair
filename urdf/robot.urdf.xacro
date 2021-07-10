@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="noob_robot">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="swc">
     <!-- ROBOT DIMENSIONS -->
     <xacro:property name="wheel_len" value="0.05"/>
     <xacro:property name="wheel_diam" value="0.2" />

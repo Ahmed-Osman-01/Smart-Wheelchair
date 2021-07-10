@@ -8,6 +8,7 @@
         <rosparam command="load" file="$(find project)/navigation/config/global_cost_map.yaml"/>
         <rosparam command="load" file="$(find project)/navigation/config/local_cost_map.yaml"/>
         <rosparam command="load" file="$(find project)/navigation/config/planner.yaml"/>
+        <rosparam command="load" file="$(find project)/navigation/config/dwa_local_planner.yaml"/>
         <rosparam command="load" file="$(find project)/navigation/config/move_base.yaml"/>
     </node>
 </launch>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-    <arg name="map_file" default="$(find project)/slam/map.yaml"/>
+    <arg name="map_file" default="$(find project)/slam/map/testmap.yaml"/>
     <arg name="pose_x" />
     <arg name="pose_y" />
     <arg name="angle" />

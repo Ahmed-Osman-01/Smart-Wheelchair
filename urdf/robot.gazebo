@@ -21,8 +21,8 @@
                     <height>480</height>
                 </image>
                 <clip>
-                    <near>0.8</near>
-                    <far>3.0</far>
+                    <near>0.3</near>
+                    <far>6.0</far>
                 </clip>
             </camera>
             <plugin name="kinect_camera_controller" filename="libgazebo_ros_openni_kinect.so">
@@ -41,8 +41,8 @@
                 <distortion_k3>0.0</distortion_k3>
                 <distortion_t1>0.0</distortion_t1>
                 <distortion_t2>0.0</distortion_t2>
-                <pointCloudCutoff>0.8</pointCloudCutoff>
-                <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+                <pointCloudCutoff>0.30</pointCloudCutoff>
+                <pointCloudCutoffMax>6.0</pointCloudCutoffMax>
             </plugin>
         </sensor>
     </gazebo>

@@ -6,7 +6,7 @@
 
     <include file="$(find project)/launch/controllers.launch"/>
     <include file="$(find project)/launch/gazebo.launch"/>
-<!--    <include file="$(find project)/localization/launch/localization.launch"/>-->
+
     <include file="$(find project)/slam/launch/cloud_to_laser.launch"/>
 <!--    <include file="$(find project)/slam/launch/gmapping.launch"/>-->
     <include file="$(find project)/amcl/amcl.launch">
@@ -15,6 +15,8 @@
         <arg name="angle" value="$(arg a)"/>
     </include>
     <include file="$(find project)/navigation/launch/move_base.launch"/>
+
+<!--    <include file="$(find project)/localization/launch/localization.launch"/>-->
 <!--    <include file="$(find project)/slam/launch/depth_to_laser.launch"/> -->
     <param name="/robot/robot_description" command="xacro '$(find project)/urdf/robot.urdf.xacro'" />
 

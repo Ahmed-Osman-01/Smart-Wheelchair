@@ -4,4 +4,6 @@
     <node name="ekf_se"  pkg="robot_localization" type="ekf_localization_node" clear_params="true" >
         <rosparam command="load" file="$(find project)/localization/config/localization_config.yaml"/>
     </node>
+
+
 </launch>

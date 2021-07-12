@@ -14,7 +14,8 @@ wheels_velocity_controller:
   right_wheel: 'front_right_wheel_joint'
 
   wheel_separation: 0.6
-
+  enable_odom_tf: false
+  odom_frame_id: odom
   # Odometry covariances for the encoder output of the robot. These values should
   # be tuned to your robot's sample odometry data, but these values are a good place
   # to start
@@ -28,12 +29,12 @@ wheels_velocity_controller:
   linear:
     x:
       has_velocity_limits: true
-      max_velocity: 5   # m/s
+      max_velocity: 0.5   # m/s
       has_acceleration_limits: true
-      max_acceleration: 4   # m/s^2
+      max_acceleration: 3.2   # m/s^2
   angular:
     z:
       has_velocity_limits: true
-      max_velocity: 5   # rad/s
+      max_velocity: 2.0   # rad/s
       has_acceleration_limits: true
-      max_acceleration: 4   # rad/s^2
+      max_acceleration: 10   # rad/s^2

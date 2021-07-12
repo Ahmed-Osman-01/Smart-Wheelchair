@@ -42,4 +42,5 @@ odom_alpha4:      0.25   # 0.2 tr
 #odom_alpha5:      0.2    # 0.2,0.1
 odom_frame_id:    odom 
 base_frame_id:    base_link 
-global_frame_id:  map 
+global_frame_id:  map
+tf_broadcast: true

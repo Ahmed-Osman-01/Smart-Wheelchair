@@ -5,11 +5,11 @@ frequency: 50
 silent_tf_failure: false
 sensor_timeout: 0.1
 two_d_mode: true
-transform_time_offset: 0.0
+transform_time_offset: 0.03
 transform_timeout: 0.0
 print_diagnostics: true
 debug: false
-publish_tf: false
+publish_tf: true
 publish_acceleration: false
 permit_corrected_publication: false
 

@@ -16,7 +16,7 @@
     </include>
     <include file="$(find project)/navigation/launch/move_base.launch"/>
 
-<!--    <include file="$(find project)/localization/launch/localization.launch"/>-->
+    <include file="$(find project)/localization/launch/localization.launch"/>
 <!--    <include file="$(find project)/slam/launch/depth_to_laser.launch"/> -->
     <param name="/robot/robot_description" command="xacro '$(find project)/urdf/robot.urdf.xacro'" />
 
